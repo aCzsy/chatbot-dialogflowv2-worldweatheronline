@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="chatScrollView" type="id" />
+    <item name="chatLayout" type="id" />
+    <item name="sendBtn" type="id" />
+    <item name="queryEditText" type="id" />
+</resources>
