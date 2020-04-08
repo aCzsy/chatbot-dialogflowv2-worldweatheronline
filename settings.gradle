@@ -1,0 +1,2 @@
+rootProject.name='VacationBot'
+include ':app'
