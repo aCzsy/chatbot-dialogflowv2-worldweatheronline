@@ -2,6 +2,7 @@ package com.example.vacationbot;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -31,7 +32,7 @@ import java.util.UUID;
 import ai.api.AIServiceContext;
 import ai.api.AIServiceContextBuilder;
 import ai.api.android.AIConfiguration;
-import ai.api.AIDataService;
+import ai.api.android.AIDataService;
 import ai.api.model.AIRequest;
 import ai.api.model.AIResponse;
 
@@ -95,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
         final AIConfiguration config = new AIConfiguration("8ad6cb2ff61042f7b8ac7904e7db4228",
                 AIConfiguration.SupportedLanguages.English,
                 AIConfiguration.RecognitionEngine.System);
-        aiDataService = new AIDataService(config);
+                aiDataService = new AIDataService(this, config);
         customAIServiceContext = AIServiceContextBuilder.buildFromSessionId(uuid);// helps to create new session whenever app restarts
         aiRequest = new AIRequest();
     }
