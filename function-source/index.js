@@ -35,7 +35,7 @@ function callWeatherApi (city, date) {
     // Create the path for the HTTP request to get the weather
     //let path = 'http://api.worldweatheronline.com/premium/v1/weather.ashx?format=json&num_of_days=2' +
       //'&q=' + encodeURIComponent(city) + '&key=' + wwoApiKey + '&date=' + date;
- 	let path = '/premium/v1/weather.ashx?key=' + wwoApiKey + '&q=' + city + '&format=json&num_of_days=3';
+ 	let path = '/premium/v1/weather.ashx?key=' + wwoApiKey + '&q=' + city + '&format=json&num_of_days=3&date=' + date;
     console.log('API Request: ' + host + path);
 
     // Make the HTTP request to get the weather
@@ -51,10 +51,10 @@ function callWeatherApi (city, date) {
         let location = response['data']['request'][0];
 
         // Create response      
-		let output = `Weather in ${location['query']} for 3 days:\n\n`;
+		let output = `Weather in ${location['query']}:\n\n`;
         //Alternative loop
         for(let i = 0; i < fore.length; i++){
-        	output += fore[i].date + `: ` + fore[i].avgtempC + `°C ` + fore[i].hourly[i].weatherDesc[0].value + `\n\n`; 
+        	output += `📅 ` + fore[i].date + `: 🌡️ ` + fore[i].avgtempC + `°C ` + fore[i].hourly[i].weatherDesc[0].value + `\n\n`; 
         }
         //Alternative iteration
         /*for (const forecast of response.data.weather) {
@@ -63,13 +63,13 @@ function callWeatherApi (city, date) {
         
         for (const forecast of response.data.weather) {
         	if(forecast.avgtempC <= 20){
-            	output += `-> Clothing suggestion for ${forecast.date}: Bring some warm clothes, just in case!\n\n`;
+            	output += `-> Clothing suggestion for ${forecast.date}: Bring some warm clothes, just in case! 😬😬😬\n\n`;
             }
              else if(forecast.avgtempC > 15){
-            	output += `-> Clothing suggestion for ${forecast.date}: Prepare for sunbathing, Weather will be great!\n\n`;
+            	output += `-> Clothing suggestion for ${forecast.date}: Prepare for sunbathing, Weather will be great! 🌞 🌞 😎\n\n`;
             }		
       	}
-        output += `NOTE: WE DON'T RECOMMEND TRAVELLING DUE TO THE CORONAVIRUS!!!`;
+        output += `⚠️ NOTE: WE DON'T RECOMMEND TRAVELLING DUE TO THE CORONAVIRUS!!!`;
 		
         // Resolve the promise with the output text
         console.log(output);
