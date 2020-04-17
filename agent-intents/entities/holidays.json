@@ -1,0 +1,9 @@
+{
+  "id": "51f2cd9f-a5f3-462e-bedd-e1ec6113f6fe",
+  "name": "holidays",
+  "isOverridable": true,
+  "isEnum": false,
+  "isRegexp": false,
+  "automatedExpansion": false,
+  "allowFuzzyExtraction": false
+}

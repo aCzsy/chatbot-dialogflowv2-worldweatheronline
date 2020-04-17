@@ -1,0 +1,9 @@
+{
+  "id": "c7e588a7-54a7-43b9-8967-393cb20a5c16",
+  "name": "Travel_Places_Emoji_Entity",
+  "isOverridable": true,
+  "isEnum": false,
+  "isRegexp": false,
+  "automatedExpansion": false,
+  "allowFuzzyExtraction": false
+}

@@ -1,0 +1,67 @@
+{
+  "id": "a0526d04-7934-43c1-8e75-1b190e60cf6e",
+  "parentId": "1bf124b0-1aa1-48eb-ac0c-31d276f12721",
+  "rootParentId": "1bf124b0-1aa1-48eb-ac0c-31d276f12721",
+  "name": "GoingOnHolidays - custom",
+  "auto": true,
+  "contexts": [
+    "GoingOnHolidays-followup"
+  ],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "GoingOnHolidays.GoingOnHolidays-custom",
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "id": "a76a154e-0fce-4ad1-80c2-8131e76d7c3c",
+          "required": true,
+          "dataType": "@countries",
+          "name": "countries",
+          "value": "$countries",
+          "prompts": [
+            {
+              "lang": "en",
+              "value": "Holidays are great, I love them too! So which countries are you planning to visit? Write them one by one and I will give you my suggestions ! 😉 😉"
+            }
+          ],
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "isList": false
+        },
+        {
+          "id": "0b4b4487-f887-4a2b-b3d6-5939ab3c7e0e",
+          "required": false,
+          "dataType": "@tracks",
+          "name": "tracks",
+          "value": "$tracks",
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "condition": "",
+          "speech": "Holidays are great, I love them too ❗ Please type \u0027 weather \u0027 + the country you\u0027re planning to visit, to get quick weather forecast and my suggestions ❗ 😉 😉 P.S ✔️ Countries to be entered one per entry  ❗"
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}

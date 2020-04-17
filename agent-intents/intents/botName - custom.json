@@ -1,0 +1,86 @@
+{
+  "id": "274e65f8-02ee-4646-b4fe-b532d165d969",
+  "parentId": "a48d4852-4fce-4f60-b2cd-1f0795ad707c",
+  "rootParentId": "a48d4852-4fce-4f60-b2cd-1f0795ad707c",
+  "name": "botName - custom",
+  "auto": true,
+  "contexts": [
+    "botName-followup"
+  ],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "botName.botName-custom",
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "id": "5d542106-f00f-43ce-aee1-03cce585ff48",
+          "required": false,
+          "dataType": "@myName",
+          "name": "myname",
+          "value": "$myname",
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "isList": false
+        },
+        {
+          "id": "80f7c8b0-dbc8-4a76-91a6-d533ba4c88fe",
+          "required": true,
+          "dataType": "@sys.given-name",
+          "name": "givenname",
+          "value": "$given-name",
+          "prompts": [
+            {
+              "lang": "en",
+              "value": "Sorry, can you repeat your name please?"
+            },
+            {
+              "lang": "en",
+              "value": "Tell me your name please 🙂"
+            }
+          ],
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "isList": false
+        },
+        {
+          "id": "48eb6572-98eb-4b31-a6c8-199d11de768b",
+          "required": false,
+          "dataType": "@sys.given-name",
+          "name": "given-name",
+          "value": "$given-name",
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "condition": "",
+          "speech": [
+            "Hey, $given-name ❗ How can I help you?",
+            "Hi , $given-name ❗ Anything I can help you with today?"
+          ]
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}

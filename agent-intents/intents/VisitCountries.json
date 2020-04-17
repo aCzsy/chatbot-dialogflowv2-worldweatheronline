@@ -1,0 +1,47 @@
+{
+  "id": "348083d5-37fc-4cb5-9c17-1ab5f8b15fcb",
+  "name": "VisitCountries",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "id": "6e663ff6-a279-4a51-8abc-c4cac1a278fc",
+          "required": true,
+          "dataType": "@countries",
+          "name": "countries",
+          "value": "$countries",
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "condition": "",
+          "speech": [
+            "That\u0027s nice to hear, which countries are you planning to visit?",
+            "Cool, sounds like you enjoy travelling!"
+          ]
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}

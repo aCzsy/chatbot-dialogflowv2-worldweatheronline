@@ -1,0 +1,53 @@
+{
+  "id": "9391d69c-b8aa-45ea-9216-7cb5b53ce819",
+  "parentId": "7a1c9436-7f71-460e-a244-1f01c8b709f7",
+  "rootParentId": "7a1c9436-7f71-460e-a244-1f01c8b709f7",
+  "name": "howAreYou - custom",
+  "auto": true,
+  "contexts": [
+    "howAreYou-followup"
+  ],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "howAreYou.howAreYou-custom",
+      "affectedContexts": [],
+      "parameters": [
+        {
+          "id": "fb132466-9fa9-4fff-b994-7261850774db",
+          "required": true,
+          "dataType": "@Me",
+          "name": "me",
+          "value": "$me",
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "condition": "",
+          "speech": [
+            "That\u0027 s good! 🙂",
+            "Good to hear! 🙂",
+            "That\u0027s great! 🙂"
+          ]
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}

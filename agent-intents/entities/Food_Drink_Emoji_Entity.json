@@ -1,0 +1,9 @@
+{
+  "id": "b6de93ae-3106-40fb-a825-6d7888300c79",
+  "name": "Food_Drink_Emoji_Entity",
+  "isOverridable": true,
+  "isEnum": false,
+  "isRegexp": false,
+  "automatedExpansion": false,
+  "allowFuzzyExtraction": false
+}

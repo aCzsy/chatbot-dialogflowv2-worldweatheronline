@@ -3,7 +3,9 @@ package com.example.vacationbot;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.speech.RecognizerIntent;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -27,6 +29,8 @@ import com.google.cloud.dialogflow.v2beta1.SessionsSettings;
 import com.google.cloud.dialogflow.v2beta1.TextInput;
 
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Locale;
 import java.util.UUID;
 
 import ai.api.AIServiceContext;
@@ -84,22 +88,11 @@ public class MainActivity extends AppCompatActivity {
                 }
                 return false;
             });
-
-            // Android client
-//        initChatbot();
-
+            
             // Java V2
             initV2Chatbot();
         }
 
-    private void initChatbot() {
-        final AIConfiguration config = new AIConfiguration("8ad6cb2ff61042f7b8ac7904e7db4228",
-                AIConfiguration.SupportedLanguages.English,
-                AIConfiguration.RecognitionEngine.System);
-                aiDataService = new AIDataService(this, config);
-        customAIServiceContext = AIServiceContextBuilder.buildFromSessionId(uuid);// helps to create new session whenever app restarts
-        aiRequest = new AIRequest();
-    }
 
     private void initV2Chatbot() {
         try {
@@ -123,10 +116,6 @@ public class MainActivity extends AppCompatActivity {
         } else {
             showTextView(msg, USER);
             queryEditText.setText("");
-             //Android client
-//            aiRequest.setQuery(msg);
-//            RequestTask requestTask = new RequestTask(MainActivity.this, aiDataService, customAIServiceContext);
-//            requestTask.execute(aiRequest);
 
             // Java V2
             QueryInput queryInput = QueryInput.newBuilder().setText(TextInput.newBuilder().setText(msg).setLanguageCode("en-US")).build();
@@ -172,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
         layout.setFocusableInTouchMode(true);
-        chatLayout.addView(layout); // move focus to text view to automatically make it scroll up if softfocus
+        chatLayout.addView(layout); // move focus to text view to automatically make it scroll up
         TextView tv = layout.findViewById(R.id.chatMsg);
         tv.setText(message);
         layout.requestFocus();
@@ -188,4 +177,5 @@ public class MainActivity extends AppCompatActivity {
         LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
         return (FrameLayout) inflater.inflate(R.layout.bot_msg_layout, null);
     }
+
 }

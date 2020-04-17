@@ -1,0 +1,9 @@
+{
+  "id": "9a7487f8-3526-4e69-862b-e13ed22be090",
+  "name": "botName",
+  "isOverridable": true,
+  "isEnum": false,
+  "isRegexp": false,
+  "automatedExpansion": false,
+  "allowFuzzyExtraction": false
+}
