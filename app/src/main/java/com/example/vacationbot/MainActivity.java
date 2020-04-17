@@ -49,12 +49,7 @@ public class MainActivity extends AppCompatActivity {
     private String uuid = UUID.randomUUID().toString();
     private LinearLayout chatLayout;
     private EditText queryEditText;
-
-    // Android client
-    private AIRequest aiRequest;
-    private AIDataService aiDataService;
-    private AIServiceContext customAIServiceContext;
-
+    
     // Java V2
     private SessionsClient sessionsClient;
     private SessionName session;
@@ -88,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 return false;
             });
-            
+
             // Java V2
             initV2Chatbot();
         }
