@@ -1,9 +1,0 @@
-{
-  "id": "2d7989d1-96da-4fbc-bfc4-e0c0ae6493f2",
-  "name": "Flags_Emoji_Entity",
-  "isOverridable": true,
-  "isEnum": false,
-  "isRegexp": false,
-  "automatedExpansion": false,
-  "allowFuzzyExtraction": false
-}

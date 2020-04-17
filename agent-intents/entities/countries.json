@@ -1,9 +1,0 @@
-{
-  "id": "02016a86-ff46-4d88-b92d-084fce0b87bf",
-  "name": "countries",
-  "isOverridable": true,
-  "isEnum": false,
-  "isRegexp": false,
-  "automatedExpansion": false,
-  "allowFuzzyExtraction": false
-}
