@@ -46,15 +46,21 @@ function callWeatherApi (city, date) {
         // After all the data has been received parse the JSON for desired data
         let response = JSON.parse(body);
         
-    	let fore = response['data']['weather'];
-        let forecast = response['data']['weather'][0];
+    
+        let forecast = response['data']['weather'];
         let location = response['data']['request'][0];
+        let rainy_set = ["Sweater","Pants", "Jacket", "Shoes", "Raincoat", "Umbrella"];
+        let sunny_set = ["Shoes", "Light jeans", "T-shirt", "Sunglasses", "Hat"];
+        let sunny_rainy_set = ["Shoes", "Light jeans", "T-shirt", "Sunglasses", "Hat", "Umbrella"];
+        let cloudy_set = ["Sweater","Pants", "Jacket", "Shoes"];
+        let normal_set = ["Runners","Jeans", "T-shirt", "Hoodie"];
+        let normal_rainy_set = ["Runners","Jeans", "T-shirt", "Hoodie", "Umbrella"];
 
         // Create response      
-		let output = `Weather in ${location['query']}:\n\n`;
+		let output = `${location['query']}:\n\n`;
         //Alternative loop
-        for(let i = 0; i < fore.length; i++){
-        	output += `📅 ` + fore[i].date + `: 🌡️ ` + fore[i].avgtempC + `°C ` + fore[i].hourly[i].weatherDesc[0].value + `\n\n`; 
+        for(let i = 0; i < forecast.length; i++){
+        	output += `📅 ` + forecast[i].date + `: 🌡️ ` + forecast[i].avgtempC + `°C ` + forecast[i].hourly[i].weatherDesc[0].value +  `, Chance of rain: ` + forecast[i].hourly[i].chanceofrain + `% \n\n`; 
         }
         //Alternative iteration
         /*for (const forecast of response.data.weather) {
@@ -62,12 +68,48 @@ function callWeatherApi (city, date) {
       	}*/
         
         for (const forecast of response.data.weather) {
-        	if(forecast.avgtempC <= 20){
-            	output += `-> Clothing suggestion for ${forecast.date}: Bring some warm clothes, just in case! 😬😬😬\n\n`;
+        	if(forecast.avgtempC <= 10){
+            	output += `-> Clothing suggestion for ${forecast.date}: \n\n`;
+              for(let i=0;i < cloudy_set.length;i++){
+              	output += `• ` + cloudy_set[i] + `\n`;
+              }
+          	output += `\n`;
             }
-             else if(forecast.avgtempC > 15){
-            	output += `-> Clothing suggestion for ${forecast.date}: Prepare for sunbathing, Weather will be great! 🌞 🌞 😎\n\n`;
-            }		
+             else if(forecast.avgtempC <= 10 && forecast.hourly[0].chanceofrain > 40){
+               output += `-> Clothing suggestion for ${forecast.date}: \n\n`;
+                for(let i=0;i < rainy_set.length;i++){
+                	output += `• ` + rainy_set[i] + `\n`;
+                }
+               output += `\n`;
+              }
+             else if(forecast.avgtempC > 10 && forecast.avgtempC <= 20 && forecast.hourly[0].chanceofrain < 20){
+            	output += `-> Clothing suggestion for ${forecast.date}: \n\n`;
+                for(let i=0;i < normal_set.length;i++){
+                	output += `• ` + normal_set[i] + `\n`;
+                }
+               output += `\n`;
+            }
+             else if(forecast.avgtempC > 10 && forecast.avgtempC <= 20 && forecast.hourly[0].chanceofrain > 20){
+            	output += `-> Clothing suggestion for ${forecast.date}: \n\n`;
+                for(let i=0;i < normal_rainy_set.length;i++){
+                	output += `• ` + normal_rainy_set[i] + `\n`;
+                }
+               output += `\n`;
+            }	
+            else if(forecast.avgtempC > 20 && forecast.hourly[0].chanceofrain < 20){
+            	output += `-> Clothing suggestion for ${forecast.date}: \n\n`;
+                for(let i=0;i < sunny_set.length;i++){
+                	output += `• ` + sunny_set[i] + `\n`;
+                }
+               output += `\n`;
+            }
+            else if(forecast.avgtempC > 20 && forecast.hourly[0].chanceofrain >= 20){
+            	output += `-> Clothing suggestion for ${forecast.date}: \n\n`;
+                for(let i=0;i < sunny_rainy_set.length;i++){
+                	output += `• ` + sunny_rainy_set[i] + `\n`;
+                }
+               output += `\n`;
+            }
       	}
         output += `⚠️ NOTE: WE DON'T RECOMMEND TRAVELLING DUE TO THE CORONAVIRUS!!!`;
 		
@@ -82,5 +124,9 @@ function callWeatherApi (city, date) {
     });
   });
 }
+
+
+
+
 
 
