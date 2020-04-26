@@ -173,5 +173,44 @@ public class MainActivity extends AppCompatActivity {
         return (FrameLayout) inflater.inflate(R.layout.bot_msg_layout, null);
     }
 
+    //Using built-in Speech Recognizer
+    // Create an intent that can start the Speech Recognizer activity
+    public void getSpeechInput(View view) {
+        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
+
+        // Start the activity, the intent will be populated with the speech text
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(intent, 10);
+        } else {
+            Toast.makeText(this, "Your Device Don't Support Speech Input", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    // This callback is invoked when the Speech Recognizer returns.
+    // This is where you process the intent and extract the speech text from the intent.
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode) {
+            case 10:
+                if (resultCode == RESULT_OK && data != null) {
+                    //Getting our speech input
+                    ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                    //Transforming it into an array
+                    String spokenText = result.get(0);
+                    //Displaying the speech input as a user's text message
+                    showTextView(spokenText, USER);
+                    queryEditText.setText("");
+                    // Java V2
+                    QueryInput queryInput = QueryInput.newBuilder().setText(TextInput.newBuilder().setText(spokenText).setLanguageCode("en-US")).build();
+                    new RequestJavaV2Task(MainActivity.this, session, sessionsClient, queryInput).execute();
+                }
+                break;
+        }
+    }
+
 
 }
