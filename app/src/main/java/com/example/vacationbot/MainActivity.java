@@ -2,10 +2,7 @@ package com.example.vacationbot;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.speech.RecognizerIntent;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -17,6 +14,9 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.speech.RecognizerIntent;
+import android.content.Context;
+import android.content.Intent;
 
 import com.google.api.gax.core.FixedCredentialsProvider;
 import com.google.auth.oauth2.GoogleCredentials;
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     private String uuid = UUID.randomUUID().toString();
     private LinearLayout chatLayout;
     private EditText queryEditText;
-    
+
     // Java V2
     private SessionsClient sessionsClient;
     private SessionName session;
@@ -104,6 +104,18 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void callback(AIResponse aiResponse) {
+        if (aiResponse != null) {
+            // process aiResponse here
+            String botReply = aiResponse.getResult().getFulfillment().getSpeech();
+            Log.d(TAG, "Bot Reply: " + botReply);
+            showTextView(botReply, BOT);
+        } else {
+            Log.d(TAG, "Bot Reply: Null");
+            showTextView("There was some communication issue. Please Try again!", BOT);
+        }
+    }
+
     private void sendMessage(View view) {
         String msg = queryEditText.getText().toString();
         if (msg.trim().isEmpty()) {
@@ -115,18 +127,6 @@ public class MainActivity extends AppCompatActivity {
             // Java V2
             QueryInput queryInput = QueryInput.newBuilder().setText(TextInput.newBuilder().setText(msg).setLanguageCode("en-US")).build();
             new RequestJavaV2Task(MainActivity.this, session, sessionsClient, queryInput).execute();
-        }
-    }
-
-    public void callback(AIResponse aiResponse) {
-        if (aiResponse != null) {
-            // process aiResponse here
-            String botReply = aiResponse.getResult().getFulfillment().getSpeech();
-            Log.d(TAG, "Bot Reply: " + botReply);
-            showTextView(botReply, BOT);
-        } else {
-            Log.d(TAG, "Bot Reply: Null");
-            showTextView("There was some communication issue. Please Try again!", BOT);
         }
     }
 
@@ -172,5 +172,6 @@ public class MainActivity extends AppCompatActivity {
         LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
         return (FrameLayout) inflater.inflate(R.layout.bot_msg_layout, null);
     }
+
 
 }

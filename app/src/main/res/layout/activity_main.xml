@@ -67,8 +67,9 @@
             android:layout_height="48dp"
             android:layout_marginBottom="11dp"
             android:gravity="center"
-            android:onClick="getSpeechInput"
-            android:src="@drawable/ic_mic" />
+            android:src="@drawable/ic_mic"/>
+<!--            android:onClick="getSpeechInput"-->
+
 
     </RelativeLayout>
 
