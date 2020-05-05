@@ -7,10 +7,14 @@ const {WebhookClient} = require('dialogflow-fulfillment');
 const {Card, Suggestion} = require('dialogflow-fulfillment');
 const host = 'api.worldweatheronline.com';
 const wwoApiKey = '034e35a7105c469e9e0103742201104';
+let output = "";
 
 process.env.DEBUG = 'dialogflow:debug'; // enables lib debugging statements
 
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest((req, res) => {
+
+    /*console.log('Dialogflow Request headers: ' + JSON.stringify(req.headers));
+  console.log('Dialogflow Request body: ' + JSON.stringify(req.body));*/
 
     // let city = req.body.queryResult.parameters['geo-city']; // city is a required param
     let city1 = "";
@@ -48,6 +52,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((req, res) => 
     }).catch(() => {
         res.json({ 'fulfillmentText': `I don't know the weather but I hope it's good!` });
     });
+
 });
 
 
@@ -58,7 +63,7 @@ function callWeatherApi (city1, city2, city3, city4, city5, date) {
         console.log('API Request: ' + host + path);
 
         const data = JSON.stringify({
-            todo: 'Buy the milk'
+            todo: ''
         });
 
         const options = {
@@ -99,7 +104,8 @@ function callWeatherApi (city1, city2, city3, city4, city5, date) {
                     output += (`${forecast.date} : Average : ${forecast.avgtempC}°C\n`);
                   }*/
 
-                let output = `Your trip info: \n\n`;
+
+                output = `Your trip info: \n\n`;
 
 
                 //Chance of rain for 3 days for each country
@@ -111,7 +117,7 @@ function callWeatherApi (city1, city2, city3, city4, city5, date) {
                     if(i == 0){
                         output += `DAY 1:\n`;
                         if(t[i].weather[0].avgtempC <= 10){
-                                output += `Pretty cold in ` + t[i].request[0].query + ` with ` +
+                            output += `Pretty cold in ` + t[i].request[0].query + ` with ` +
                                 t[i].weather[0].avgtempC + `°C, ` + ` ` + t[i].current_condition[0].weatherDesc[0].value;
                             output += `\nOutfit suggestion for : ` + t[i].weather[0].date + ` \n\n`;
 
@@ -154,7 +160,7 @@ function callWeatherApi (city1, city2, city3, city4, city5, date) {
                             output += `Hot and dry in ` + t[i].request[0].query + ` with ` +
                                 t[i].weather[0].avgtempC + `°C, ` + ` ` + t[i].current_condition[0].weatherDesc[0].value;
                             output += `\nOutfit suggestion for : ` + t[i].weather[0].date + ` \n\n`;
-                            
+
                             for(let i=0;i < sunny_set.length;i++){
                                 output += `• ` + sunny_set[i] + `\n`;
                             }
@@ -169,7 +175,7 @@ function callWeatherApi (city1, city2, city3, city4, city5, date) {
                                 output += `• ` + sunny_rainy_set[i] + `\n`;
                             }
                             output += `\n`;
-                            }
+                        }
                     }
 
                     /********************************************DAY 1 COUNTRY 2********************************************/
@@ -445,7 +451,7 @@ function callWeatherApi (city1, city2, city3, city4, city5, date) {
                 reject();
             });
 
-        }); 
+        });
         request.write(data);
         request.end();
     });

@@ -19,13 +19,7 @@
         android:paddingTop="8dp"
         android:paddingEnd="8dp"
         android:paddingBottom="9dp">
-        <!--        <Button-->
-        <!--            android:id="@+id/sendBtn"-->
-        <!--            android:layout_width="72dp"-->
-        <!--            android:layout_height="34dp"-->
-        <!--            android:background="@drawable/rounded_button"-->
-        <!--            android:text="SEND"-->
-        <!--            android:textSize="12sp" />-->
+
 
         <ImageView
             android:id="@+id/sendBtn"
@@ -67,7 +61,7 @@
             android:layout_height="48dp"
             android:layout_marginBottom="11dp"
             android:gravity="center"
-            android:onClick="getSpeechInput"
+            android:onClick="displaySpeechRecognizer"
             android:src="@drawable/ic_mic"/>
 
 

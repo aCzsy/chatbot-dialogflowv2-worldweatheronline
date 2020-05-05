@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
     private SessionName session;
 
 
-
+        //Artis
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
             initV2Chatbot();
         }
 
-
+    //Artis
     private void initV2Chatbot() {
         try {
             InputStream stream = getResources().openRawResource(R.raw.agent_credentials);
@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
+    //Artis
     public void callback(AIResponse aiResponse) {
         if (aiResponse != null) {
             // process aiResponse here
@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
             showTextView("There was some communication issue. Please Try again!", BOT);
         }
     }
-
+    //Artis
     private void sendMessage(View view) {
         String msg = queryEditText.getText().toString();
         if (msg.trim().isEmpty()) {
@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
             new RequestJavaV2Task(MainActivity.this, session, sessionsClient, queryInput).execute();
         }
     }
-
+    //Artis
     public void callbackV2(DetectIntentResponse response) {
         if (response != null) {
             // process aiResponse here
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
             showTextView("There was some communication issue. Please Try again!", BOT);
         }
     }
-
+    //Jan
     private void showTextView(String message, int type) {
         FrameLayout layout;
         switch (type) {
@@ -162,20 +162,21 @@ public class MainActivity extends AppCompatActivity {
         layout.requestFocus();
         queryEditText.requestFocus(); // change focus back to edit text to continue typing
     }
-
+    //Jan
     FrameLayout getUserLayout() {
         LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
         return (FrameLayout) inflater.inflate(R.layout.user_msg_layout, null);
     }
-
+    //Jan
     FrameLayout getBotLayout() {
         LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
         return (FrameLayout) inflater.inflate(R.layout.bot_msg_layout, null);
     }
 
+    //Artis
     //Using built-in Speech Recognizer
     // Create an intent that can start the Speech Recognizer activity
-    public void getSpeechInput(View view) {
+    public void displaySpeechRecognizer(View view) {
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
@@ -187,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Your Device Don't Support Speech Input", Toast.LENGTH_SHORT).show();
         }
     }
-
+    //Artis
     // This callback is invoked when the Speech Recognizer returns.
     // This is where you process the intent and extract the speech text from the intent.
     @Override
