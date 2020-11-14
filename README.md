@@ -3,6 +3,16 @@ Interactive chatbot which uses worldweather API and 5 cities that user provides 
 This project was created using Dialogflow v2 and WorldWeatherOnline API.
 
 Note: This project requires a **WWOKEY** which you can get after registration on worldweatheronline.com
+The key has to be edited in the fulfillment section on Dialogflow.
+
+```const http = require('http');
+const functions = require('firebase-functions');
+const {WebhookClient} = require('dialogflow-fulfillment');
+const {Card, Suggestion} = require('dialogflow-fulfillment');
+const host = 'api.worldweatheronline.com';
+const wwoApiKey = 'enterYourKey';
+```
+
 AND
 
 **CLIENT_ACCESS_TOKEN** which needs to be edited in **gradle.properties**
