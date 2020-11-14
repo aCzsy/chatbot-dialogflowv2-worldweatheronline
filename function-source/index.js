@@ -6,7 +6,7 @@ const functions = require('firebase-functions');
 const {WebhookClient} = require('dialogflow-fulfillment');
 const {Card, Suggestion} = require('dialogflow-fulfillment');
 const host = 'api.worldweatheronline.com';
-const wwoApiKey = '034e35a7105c469e9e0103742201104';
+const wwoApiKey = 'yourWwoKey';
 let output = "";
 
 process.env.DEBUG = 'dialogflow:debug'; // enables lib debugging statements
@@ -92,26 +92,11 @@ function callWeatherApi (city1, city2, city3, city4, city5, date) {
                 let normal_set = ["Runners","Jeans", "T-shirt", "Hoodie"];
                 let normal_rainy_set = ["Runners","Jeans", "T-shirt", "Hoodie", "Umbrella"];
 
-                // Create response
-                //let output = `${test2['query']}:\n\n`;
-                //Alternative loop
-                // for(let i = 0; i < forecast.length; i++){
-                //     output += `📅 ` + forecast[i].date + `: 🌡️ ` + forecast[i].avgtempC + `°C ` + forecast[i].hourly[i].weatherDesc[0].value +  `, Chance of rain: ` + forecast[i].hourly[i].chanceofrain + `% \n\n`;
-                // }
-
-                //Alternative iteration
-                /*for (const forecast of response.data.weather) {
-                    output += (`${forecast.date} : Average : ${forecast.avgtempC}°C\n`);
-                  }*/
-
-
                 output = `Your trip info: \n\n`;
-
 
                 //Chance of rain for 3 days for each country
                 for(let i = 0; i < t.length; i++){
                     output  += t[i].request[0].query + `\n`;
-
 
                     /********************************************DAY 1 COUNTRY 1********************************************/
                     if(i == 0){
@@ -439,9 +424,6 @@ function callWeatherApi (city1, city2, city3, city4, city5, date) {
                     }
 
                 }
-
-                // output += `⚠️ NOTE: WE DON'T RECOMMEND TRAVELLING DUE TO THE CORONAVIRUS!!!`;
-
                 // Resolve the promise with the output text
                 console.log(output);
                 resolve(output);

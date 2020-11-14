@@ -18,7 +18,6 @@ import ai.api.android.AIDataService;
 import ai.api.model.AIRequest;
 
 public class SplashScreen extends AppCompatActivity {
-    //Artis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

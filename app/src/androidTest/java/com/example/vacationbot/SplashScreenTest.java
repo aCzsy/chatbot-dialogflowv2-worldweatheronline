@@ -13,7 +13,6 @@ import static org.robolectric.Shadows.shadowOf;
 
 @RunWith(RobolectricTestRunner.class)
 public class SplashScreenTest {
-    //Artis & Jan
     @Test
     public void onCreate() {
         try(ActivityScenario<SplashScreen> scenario = ActivityScenario.launch(SplashScreen.class)) {
